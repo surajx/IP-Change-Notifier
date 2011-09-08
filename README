@@ -1,0 +1,1 @@
+This script takes the global IP of BSNL teracom router and checks if it has changed or not. If changed the script sends the new IP addr to a predefined mail ID
