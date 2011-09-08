@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd `echo $0 | sed 's,[^/]*$,,'`
+
 if [ ! -f ./script.cfg ]
 then
 	echo "ERROR:script.cfg file missing" > err.log
