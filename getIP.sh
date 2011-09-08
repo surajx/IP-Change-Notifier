@@ -1,4 +1,19 @@
 #!/bin/bash
+function valid_ip()
+{
+    local  ip=$1
+    local  stat=1
+    if [[ $ip =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]]
+    then
+        OIFS=$IFS
+        IFS='.'
+        ip=($ip)
+        IFS=$OIFS
+        [[ ${ip[0]} -le 255 && ${ip[1]} -le 255 && ${ip[2]} -le 255 && ${ip[3]} -le 255 ]]
+        stat=$?
+    fi
+    return $stat
+}
 
 cd `echo $0 | sed 's,[^/]*$,,'` 
 
@@ -31,5 +46,12 @@ if [[ "$IP_ADDR" == "$PREV_IP_ADDR" ]]
 then
    exit
 fi
-echo $IP_ADDR > prev_ip.ip
+if [[ `valid_ip $IP_ADDR` -eq 0 ]]
+then
+   echo $IP_ADDR > prev_ip.ip
+else
+   touch err.log
+   echo `date`": IP address received not valid, retry in 15 min." >> err.log
+   exit
+fi
 echo "$IP_ADDR" | mailx -s "IP Changed!!" $EMAIL
