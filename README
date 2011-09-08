@@ -1,1 +1,8 @@
-This script takes the global IP of BSNL teracom router and checks if it has changed or not. If changed the script sends the new IP addr to a predefined mail ID
+Introduction
+------------
+This script takes the global IP of WAN interface in BSNL(India) TERACOM router and checks if it has changed or not. If changed the script sends the new IP addr to a predefined mail ID.
+
+File List
+---------
+getIP.sh - scripts file to be called by crontab every 15 min.
+script.cfg - config file containting details required for getIP.sh to run.
