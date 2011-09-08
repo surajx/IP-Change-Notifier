@@ -4,7 +4,7 @@ This script takes the global IP of WAN interface in BSNL(India) TERACOM router a
 
 Usage
 -----
-Provide an entry in /etc/crontab for executing the script every 15 mins. The entry will lokk like:
+Provide an entry in /etc/crontab for executing the script every 15 mins. The entry will look like:
 */15 * * * * <user name> bash <absolute path to script>/getIP.sh
 Eg: */15 * * * *   surajx  bash /home/surajx/bin/sendIP/getIP.sh
 
