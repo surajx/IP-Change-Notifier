@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd `echo $0 | sed 's,[^/]*$,,'`
+cd `echo $0 | sed 's,[^/]*$,,'` 
 
 if [ ! -f ./script.cfg ]
 then
