@@ -49,9 +49,8 @@ fi
 if [[ `valid_ip $IP_ADDR` -eq 0 ]]
 then
    echo $IP_ADDR > prev_ip.ip
+   echo "$IP_ADDR" | mailx -s "IP Changed!!" $EMAIL
 else
    touch err.log
    echo `date`": IP address received not valid, retry in 15 min." >> err.log
-   exit
 fi
-echo "$IP_ADDR" | mailx -s "IP Changed!!" $EMAIL
